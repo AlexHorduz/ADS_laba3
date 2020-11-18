@@ -9,9 +9,7 @@ vector<int> bubbleSort(vector<int> v) {
 	for (size_t i = 1; i < n; i++)
 		for (size_t j = 0; j + i < n; j++)
 			if (v[j] < v[j + 1]) {
-				v[j] = v[j] + v[j + 1];
-				v[j + 1] = v[j] - v[j + 1];
-				v[j] -= v[j + 1];
+				swap(v[j], v[j+1])
 			}
 	return v;
 }
@@ -22,9 +20,7 @@ vector<int> insertionSort(vector<int> v) {
 		if (v[i] > v[i - 1])
 			for (size_t j = i; j > 0; j--)
 				if (v[j] > v[j - 1]) {
-					v[j] += v[j - 1];
-					v[j - 1] = v[j] - v[j - 1];
-					v[j] -= v[j - 1];
+					swap(v[j], v[j-1]);
 				}
 				else
 					break;
@@ -43,9 +39,7 @@ vector<int> selectionSort(vector<int> v) {
 				max = v[j];
 			}
 		if (max_ind != i) {
-			v[i] += v[max_ind];
-			v[max_ind] = v[i] - v[max_ind];
-			v[i] -= v[max_ind];
+			swap(v[i], v[max_ind]);
 		}
 	}
 	return v;
